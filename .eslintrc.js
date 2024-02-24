@@ -23,5 +23,9 @@ module.exports = {
     'no-console': 'off',
     quotes: ['error', 'single'],
     'class-methods-use-this': 'off',
+    'import/first': 'off',
+  },
+  settings: {
+    'import/core-modules': ['dotenv', 'sequelize'],
   },
 };

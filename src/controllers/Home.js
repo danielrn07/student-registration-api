@@ -1,5 +1,5 @@
 class Home {
-  index(req, res) {
+  async index(req, res) {
     res.json({
       working: true,
     });

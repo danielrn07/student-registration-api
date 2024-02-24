@@ -1,3 +1,9 @@
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+import './src/database';
+
 import express from 'express';
 import homeRoutes from './src/routes/home';
 
@@ -18,5 +24,4 @@ class App {
   }
 }
 
-// exportando o express já instanciado
 export default new App().app;
