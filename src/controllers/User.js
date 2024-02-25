@@ -20,6 +20,16 @@ class User {
       return res.json(null);
     }
   }
+
+  async show(req, res) {
+    try {
+      const { id } = req.params;
+      const user = await UserModel.findByPk(id);
+      return res.json(user);
+    } catch (e) {
+      return res.json(null);
+    }
+  }
 }
 
 export default new User();
