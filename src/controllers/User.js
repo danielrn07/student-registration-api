@@ -30,6 +30,33 @@ class User {
       return res.json(null);
     }
   }
+
+  async update(req, res) {
+    try {
+      const { id } = req.params;
+
+      if (!id) {
+        return res.status(400).json({
+          errors: ['ID não enviado.'],
+        });
+      }
+
+      const user = await UserModel.findByPk(id);
+
+      if (!user) {
+        return res.status(400).json({
+          errors: ['Usuário não encontrado.'],
+        });
+      }
+
+      const newData = await user.update(req.body);
+      return res.json(newData);
+    } catch (e) {
+      return res.status(400).json({
+        errors: e.errors.map((error) => error.message),
+      });
+    }
+  }
 }
 
 export default new User();
