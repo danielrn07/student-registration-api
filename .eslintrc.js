@@ -24,8 +24,9 @@ module.exports = {
     quotes: ['error', 'single'],
     'class-methods-use-this': 'off',
     'import/first': 'off',
+    'no-param-reassign': 'off',
   },
   settings: {
-    'import/core-modules': ['dotenv', 'sequelize'],
+    'import/core-modules': ['dotenv', 'sequelize', 'bcryptjs'],
   },
 };
