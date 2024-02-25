@@ -57,6 +57,33 @@ class User {
       });
     }
   }
+
+  async delete(req, res) {
+    try {
+      const { id } = req.params;
+
+      if (!id) {
+        return res.status(400).json({
+          errors: ['ID não enviado.'],
+        });
+      }
+
+      const user = await UserModel.findByPk(id);
+
+      if (!user) {
+        return res.status(400).json({
+          errors: ['Usuário não encontrado.'],
+        });
+      }
+
+      await user.destroy();
+      return res.json(user);
+    } catch (e) {
+      return res.status(400).json({
+        errors: e.errors.map((error) => error.message),
+      });
+    }
+  }
 }
 
 export default new User();
