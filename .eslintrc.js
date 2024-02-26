@@ -27,6 +27,6 @@ module.exports = {
     'no-param-reassign': 'off',
   },
   settings: {
-    'import/core-modules': ['dotenv', 'sequelize', 'bcryptjs'],
+    'import/core-modules': ['dotenv', 'sequelize', 'bcryptjs, jsonwebtoken'],
   },
 };
