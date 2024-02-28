@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
+import UserModel from '../models/User';
 
-export default (req, res, next) => {
+export default async (req, res, next) => {
   const { authorization } = req.headers;
 
   if (!authorization) {
@@ -15,9 +16,22 @@ export default (req, res, next) => {
     const data = jwt.verify(token, process.env.TOKEN_SECRET);
     const { id, email } = data;
 
+    const user = await UserModel.findOne({
+      where: {
+        id,
+        email,
+      },
+    });
+
+    if (!user) {
+      return res.status(401).json({
+        errors: ['Usuário inválido.'],
+      });
+    }
+
     req.userID = id;
     req.userEmail = email;
-    return next;
+    return next();
   } catch (e) {
     return res.status(401).json({
       errors: ['Token expirado ou inválido.'],
