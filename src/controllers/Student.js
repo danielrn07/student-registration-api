@@ -1,6 +1,11 @@
 import StudentModel from '../models/Student';
 
 class Student {
+  async index(req, res) {
+    const students = await StudentModel.findAll();
+    res.json(students);
+  }
+
   async store(req, res) {
     try {
       const newStudent = await StudentModel.create(req.body);
