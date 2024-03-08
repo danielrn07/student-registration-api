@@ -8,5 +8,6 @@ router.post('/', loginRequired, studentController.store);
 router.get('/', studentController.index);
 router.get('/:id', studentController.show);
 router.delete('/:id', loginRequired, studentController.delete);
+router.put('/:id', loginRequired, studentController.update);
 
 export default router;

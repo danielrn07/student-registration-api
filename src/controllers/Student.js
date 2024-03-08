@@ -78,6 +78,33 @@ class Student {
       });
     }
   }
+
+  async update(req, res) {
+    try {
+      const { id } = req.params;
+
+      if (!id) {
+        return res.status(400).json({
+          errors: ['ID inválido.'],
+        });
+      }
+
+      const student = await StudentModel.findByPk(id);
+
+      if (!student) {
+        return res.status(400).json({
+          errors: ['Aluno não encontrado.'],
+        });
+      }
+
+      const newData = await student.update(req.body);
+      return res.json(newData);
+    } catch (e) {
+      return res.status(400).json({
+        errors: e.errors.map((error) => error.message),
+      });
+    }
+  }
 }
 
 export default new Student();
