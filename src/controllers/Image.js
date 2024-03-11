@@ -13,11 +13,17 @@ class Image {
         });
       }
 
-      const { originalname, filename } = req.file;
-      const { student_id } = req.body;
-      const image = await ImageModel.create({ originalname, filename, student_id });
+      try {
+        const { originalname, filename } = req.file;
+        const { student_id } = req.body;
+        const image = await ImageModel.create({ originalname, filename, student_id });
 
-      return res.json(image);
+        return res.json(image);
+      } catch (e) {
+        return res.status(400).json({
+          errors: ['Este aluno não existe.'],
+        });
+      }
     });
   }
 }
