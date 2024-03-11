@@ -60,7 +60,6 @@ export default class Student extends Model {
       },
     }, {
       sequelize,
-      tableName: 'students',
     });
     return this;
   }
