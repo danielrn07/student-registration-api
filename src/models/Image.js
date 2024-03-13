@@ -1,4 +1,5 @@
 import Sequelize, { Model } from 'sequelize';
+import appConfig from '../config/appConfig';
 
 export default class Image extends Model {
   static init(sequelize) {
@@ -19,6 +20,12 @@ export default class Image extends Model {
           notEmpty: {
             msg: 'O campo filename deve ser preenchido.',
           },
+        },
+      },
+      url: {
+        type: Sequelize.VIRTUAL,
+        get() {
+          return `${appConfig.url}/images/${this.getDataValue('filename')}`;
         },
       },
     }, {
