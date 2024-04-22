@@ -28,6 +28,6 @@ module.exports = {
     camelcase: 'off',
   },
   settings: {
-    'import/core-modules': ['dotenv', 'sequelize', 'bcryptjs, jsonwebtoken, multer'],
+    'import/core-modules': ['dotenv', 'sequelize', 'bcryptjs, jsonwebtoken, multer, cors, helmet'],
   },
 };
