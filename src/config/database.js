@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 module.exports = {
-  dialect: 'mariadb',
+  dialect: 'postgres',
   host: process.env.DATABASE_HOST,
   port: process.env.DATABASE_PORT,
   username: process.env.DATABASE_USERNAME,
@@ -11,7 +11,7 @@ module.exports = {
     timestamps: true,
     underscored: true,
     underscoredAll: true,
-    cratedAt: 'created_at',
+    createdAt: 'created_at',
     updatedAt: 'updated_at',
   },
   dialectOptions: {
